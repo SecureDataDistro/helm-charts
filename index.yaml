@@ -1,0 +1,14 @@
+apiVersion: v1
+entries:
+  spicedb-operator:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-07-23T19:40:20.867416668Z"
+    description: A Helm chart for Kubernetes
+    digest: eac5ed9ba9ef6f99aae8ad210851460e3d28bd01b8a63088854a5bd165a7ea2d
+    name: spicedb-operator
+    type: application
+    urls:
+    - https://github.com/SecureDataDistro/helm-charts/releases/download/spicedb-operator-0.1.1/spicedb-operator-0.1.1.tgz
+    version: 0.1.1
+generated: "2023-07-23T19:40:20.867428168Z"
