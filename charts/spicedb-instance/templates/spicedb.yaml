@@ -1,0 +1,15 @@
+apiVersion: v1
+kind: Secret
+metadata:
+  name: {{ include "spicedb-instance.fullname" . }}
+stringData:
+  preshared_key: "averysecretpresharedkey"
+---
+apiVersion: authzed.com/v1alpha1
+kind: SpiceDBCluster
+metadata:
+  name: {{ include "spicedb-instance.fullname" . }}
+spec:
+  config:
+    datastoreEngine: memory
+  secretName: {{ include "spicedb-instance.fullname" . }}
