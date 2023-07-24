@@ -3,7 +3,7 @@ kind: Secret
 metadata:
   name: {{ include "spicedb-instance.fullname" . }}
 stringData:
-  preshared_key: "averysecretpresharedkey"
+  preshared_key: {{ .Values.spicedb.presharedKey }}
 ---
 apiVersion: authzed.com/v1alpha1
 kind: SpiceDBCluster
