@@ -11,6 +11,17 @@ entries:
     urls:
     - https://github.com/SecureDataDistro/helm-charts/releases/download/cloudflare-0.1.0/cloudflare-0.1.0.tgz
     version: 0.1.0
+  spicedb-instance:
+  - apiVersion: v2
+    appVersion: 1.16.0
+    created: "2023-07-24T16:12:34.34091957Z"
+    description: A Helm chart for Kubernetes
+    digest: 0fbfea13aa22ef3ff7d30cafde9a718665d14a6c257151ddbf7a5ddd1f16a484
+    name: spicedb-instance
+    type: application
+    urls:
+    - https://github.com/SecureDataDistro/helm-charts/releases/download/spicedb-instance-0.1.0/spicedb-instance-0.1.0.tgz
+    version: 0.1.0
   spicedb-operator:
   - apiVersion: v2
     appVersion: 1.16.0
@@ -22,4 +33,4 @@ entries:
     urls:
     - https://github.com/SecureDataDistro/helm-charts/releases/download/spicedb-operator-0.1.1/spicedb-operator-0.1.1.tgz
     version: 0.1.1
-generated: "2023-07-23T20:15:00.564377327Z"
+generated: "2023-07-24T16:12:34.34092487Z"
