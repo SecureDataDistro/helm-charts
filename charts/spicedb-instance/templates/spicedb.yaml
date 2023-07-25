@@ -11,5 +11,6 @@ metadata:
   name: {{ include "spicedb-instance.fullname" . }}
 spec:
   config:
+    dashboardEnabled: True
     datastoreEngine: memory
   secretName: {{ include "spicedb-instance.fullname" . }}
