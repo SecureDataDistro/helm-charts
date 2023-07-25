@@ -1,0 +1,29 @@
+apiVersion: batch/v1
+kind: CronJob
+metadata:
+  name: {{ include "hasura.fullname" . }}
+  annotations:
+    config/checksum: {{ .Value | toJson | sha1sum | substr 0 12 | quote }}
+spec:
+  schedule: {{ .Values.hasura.cron.schedule }}
+  jobTemplate:
+    spec:
+      template:
+        spec:
+          volumes:
+          - name: {{ include "hasura.fullname" . }}
+            configMap:
+              name: {{ include "hasura.fullname" . }}
+              items:
+              - key: "metadata.json"
+                path: "metadata.json"
+          containers:
+          - name: {{ include "hasura.fullname" . }}
+            image: gcr.io/google.com/cloudsdktool/google-cloud-cli
+            imagePullPolicy: IfNotPresent
+            command: ["/bin/bash",  "-c", "curl -H \"X-Hasura-Admin-Secret: {{ .Values.hasura.admin.secret }}\" -d '{\"type\":\"replace_metadata\", \"args\":'\"$(cat /hasura/metadata.json)\"'}' {{ .Values.hasura.endpoint }}/v1/metadata"]
+            volumeMounts:
+            - name: {{ include "hasura.fullname" . }}
+              mountPath: "/hasura"
+              readOnly: true
+          restartPolicy: OnFailure

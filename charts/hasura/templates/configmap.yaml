@@ -1,0 +1,49 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: {{ include "hasura.fullname" . }}
+data:
+  # file-like keys
+  metadata.json: |
+    {
+      "resource_version": 2,
+      "metadata": {
+        "version": 3,
+        "sources": [
+          {
+            "name": "default",
+            "kind": "postgres",
+            "tables": [],
+            "configuration": {
+              "connection_info": {
+                "database_url": {
+                  "from_env": "HASURA_GRAPHQL_DATABASE_URL"
+                },
+                "isolation_level": "read-committed",
+                "pool_settings": {
+                  "connection_lifetime": 600,
+                  "idle_timeout": 180,
+                  "max_connections": 50,
+                  "retries": 1
+                },
+                "use_prepared_statements": true
+              }
+            }
+          }
+        ],
+        "remote_schemas": [
+          {{- range $key, $value := .Values.hasura.remoteSchemas  }}
+          {
+            "name": {{ $value.name | quote }},
+            "definition": {
+              "url": {{ $value.definition.url | quote }},
+              "timeout_seconds": 60,
+              "customization": {},
+              "forward_client_headers": true
+            },
+            "comment": ""
+          }{{ if lt $key (sub (len $.Values.hasura.remoteSchemas) 1) }},{{end }}
+          {{- end }}
+        ]
+      }
+    }
