@@ -14,6 +14,16 @@ entries:
   hasura:
   - apiVersion: v2
     appVersion: 1.16.0
+    created: "2023-07-26T00:04:22.998029798Z"
+    description: A Helm chart for Kubernetes
+    digest: 4f4c3599f15c6e76c75d654bf27d80984559bdb99c43a4c8793c31c7d406304d
+    name: hasura
+    type: application
+    urls:
+    - https://github.com/SecureDataDistro/helm-charts/releases/download/hasura-0.1.2/hasura-0.1.2.tgz
+    version: 0.1.2
+  - apiVersion: v2
+    appVersion: 1.16.0
     created: "2023-07-25T23:42:56.123937714Z"
     description: A Helm chart for Kubernetes
     digest: 3723e08893a60fef43956b31c9b7f887df177cb08b716dabc9fce462fa9d3c4e
@@ -74,4 +84,4 @@ entries:
     urls:
     - https://github.com/SecureDataDistro/helm-charts/releases/download/spicedb-operator-0.1.1/spicedb-operator-0.1.1.tgz
     version: 0.1.1
-generated: "2023-07-25T23:42:56.123953514Z"
+generated: "2023-07-26T00:04:22.998143204Z"
