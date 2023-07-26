@@ -21,7 +21,7 @@ spec:
           - name: {{ include "hasura.fullname" . }}
             image: gcr.io/google.com/cloudsdktool/google-cloud-cli
             imagePullPolicy: IfNotPresent
-            command: ["/bin/bash",  "-c", "curl -H \"X-Hasura-Admin-Secret: {{ .Values.hasura.admin.secret }}\" -d '{\"type\":\"replace_metadata\", \"args\":'\"$(cat /hasura/metadata.json)\"'}' {{ include \"hasura.fullname\" . }}/v1/metadata"]
+            command: ["/bin/bash",  "-c", "curl -H \"X-Hasura-Admin-Secret: {{ .Values.hasura.admin.secret }}\" -d '{\"type\":\"replace_metadata\", \"args\":'\"$(cat /hasura/metadata.json)\"'}' http://{{ include "hasura.fullname" . }}/v1/metadata"]
             volumeMounts:
             - name: {{ include "hasura.fullname" . }}
               mountPath: "/hasura"
